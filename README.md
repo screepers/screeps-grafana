@@ -8,9 +8,27 @@ There are two ways to get started:
 ## Path 1: Easy but not robust
 You can run this project locally, with all the drawbacks that entails.
 
+### Requirements
 Install [docker](https://docs.docker.com/engine/installation/)
 
 Install [docker-compose](https://docs.docker.com/compose/install/)
+
+#### Debian
+
+Add [Docker Repo](https://docs.docker.com/engine/installation/linux/debian/)
+
+```sudo apt install docker.io docker-compose```
+
+#### Others
+
+Add [Docker Repo](https://docs.docker.com/engine/installation/linux/)
+
+### Download
+
+* git: ```git clone https://github.com/screepers/screeps-grafana.git```
+* file: ```wget https://github.com/screepers/screeps-grafana/archive/master.zip```
+
+### Config
 
 Copy and edit the example config file:
 
@@ -19,7 +37,7 @@ cp docker-compose.env.example docker-compose.env
 $EDITOR docker-compose.env
 ```
 
-Run the setup:
+### Run the setup:
 
 ```
 bash setup.sh
