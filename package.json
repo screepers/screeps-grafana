@@ -1,23 +1,23 @@
 {
   "name": "screeps-statsd",
   "description": "screeps stats in graphite :3",
-  "version": "0.9.12",
-  "homepage": "https://github.com/hopsoft/docker-graphite-statsd",
+  "version": "0.9.13",
+  "homepage": "https://github.com/screepers/screeps-grafana",
   "author": {
     "name": "Bryan Conrad",
     "email": "bkconrad@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hopsoft/docker-graphite-statsd.git"
+    "url": "git://github.com/screepers/screeps-grafana.git"
   },
   "bugs": {
-    "url": "https://github.com/hopsoft/docker-graphite-statsd/issues"
+    "url": "https://github.com/screepers/screeps-grafana/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/hopsoft/docker-graphite-statsd/blob/master/LICENSE-MIT"
+      "url": "https://github.com/screepers/screeps-grafana/blob/master/LICENSE-MIT"
     }
   ],
   "main": "index.js",

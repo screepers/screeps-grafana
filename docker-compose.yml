@@ -1,7 +1,7 @@
 version: "2"
 services:
   node:
-    image: kaen/screeps-statsd
+    image: screepers/screeps-statsd
     restart: always
     links:
      - statsd
