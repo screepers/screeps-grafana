@@ -77,9 +77,12 @@ class ScreepsStatsd
       succes = true
       @report(finalData)
 
-  report: (data) =>
-    console.log "Pushing to gauges - " + new Date()
-    for k,v of data
-      @client.gauge k, v
+  report: (data, prefix="") =>
+    if prefix is ''
+      console.log "Pushing to gauges - " + new Date()
+      if typeof v is 'object'
+        @report(v, prefix+k+'.')
+      else
+        @client.gauge prefix+k, v
 
 module.exports = ScreepsStatsd
