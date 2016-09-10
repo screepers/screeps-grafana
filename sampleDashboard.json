@@ -1,0 +1,1215 @@
+{
+  "overwrite":true,
+  "dashboard":{
+    "id": null,
+    "title": "Sample Dashboard",
+    "tags": [
+      "screeps"
+    ],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "hideControls": false,
+    "sharedCrosshair": false,
+    "rows": [
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "100px",
+        "panels": [
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(23, 85, 20, 0.97)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(245, 54, 54, 0.9)"
+            ],
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "id": 17,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": true,
+                "target": "stats.gauges.spawn.Spawn1.defenderIndex",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.spawn.Spawn2.defenderIndex",
+                "refId": "B"
+              },
+              {
+                "target": "sumSeries(#A, #B)",
+                "refId": "C"
+              }
+            ],
+            "thresholds": "2,4",
+            "title": "Defense Status",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              },
+              {
+                "op": "=",
+                "text": "Clear",
+                "value": "0"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "decimals": 3,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 12,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(0, 255, 255, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 186, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "target": "asPercent(stats.gauges.gcl.progress, #B)",
+                "textEditor": false,
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.gcl.progressTotal",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "",
+            "title": "GCL Progress",
+            "type": "singlestat",
+            "valueFontSize": "150%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          }
+        ],
+        "title": "New row"
+      },
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "100px",
+        "panels": [
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 18,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.getUsed, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "CPU Usage",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 22,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.Start, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Init",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 19,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.CreepManagers, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Creep Manager",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 21,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.SetupRoles, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Setup Roles",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 20,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.Creeps, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Creep Func",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 23,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.Towers, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Towers",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(27, 101, 24, 0.97)",
+              "rgba(136, 74, 22, 0.89)",
+              "rgba(182, 42, 42, 0.9)"
+            ],
+            "decimals": 0,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "id": 24,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.cpu.Links, #B)",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.cpu.limit",
+                "refId": "B"
+              }
+            ],
+            "thresholds": "80,90",
+            "title": "Links",
+            "type": "singlestat",
+            "valueFontSize": "100%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(184, 41, 41, 0.9)",
+              "rgba(152, 84, 27, 0.89)",
+              "rgba(16, 69, 14, 0.97)"
+            ],
+            "editable": true,
+            "error": false,
+            "format": "none",
+            "id": 25,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "span": 1,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "target": "stats.gauges.cpu.bucket",
+                "refId": "A"
+              }
+            ],
+            "thresholds": "5000,1000",
+            "title": "Bucket",
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            }
+          }
+        ],
+        "showTitle": true,
+        "title": "CPU"
+      },
+      {
+        "collapse": false,
+        "editable": true,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {
+              "Capacity": "#0A437C",
+              "energyAvailable": "#EAB839",
+              "energyCapacityAvailable": "#0A437C",
+              "stats.gauges.room.$rooms.energyAvailable": "#629E51",
+              "stats.gauges.room.$rooms.energyCapacityAvailable": "#0A437C"
+            },
+            "bars": true,
+            "datasource": "localGraphite",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {
+              "threshold1": null,
+              "threshold1Color": "rgba(216, 200, 27, 0.27)",
+              "threshold2": null,
+              "threshold2Color": "rgba(234, 112, 112, 0.22)"
+            },
+            "id": 1,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": false,
+              "max": false,
+              "min": false,
+              "show": true,
+              "total": false,
+              "values": false
+            },
+            "lines": false,
+            "linewidth": 2,
+            "links": [
+              {
+                "targetBlank": true,
+                "title": "Main Room",
+                "type": "absolute",
+                "url": "https://screeps.com/a/#!/room/$controllerProgress"
+              }
+            ],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "target": "alias(holtWintersAberration(stats.gauges.room.$rooms.energyAvailable, 3), 'Current')",
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "alias(stats.gauges.room.$rooms.energyCapacityAvailable, 'Capacity')",
+                "refId": "B"
+              },
+              {
+                "target": "alias(holtWintersAberration(stats.gauges.room.$rooms.storedEnergy, 3), 'Stored')",
+                "textEditor": false,
+                "refId": "C"
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Energy Usage",
+            "tooltip": {
+              "shared": true,
+              "value_type": "cumulative",
+              "sort": 0,
+              "msResolution": false
+            },
+            "transparent": false,
+            "type": "graph",
+            "yaxes": [
+              {
+                "show": true,
+                "min": null,
+                "max": null,
+                "logBase": 1,
+                "format": "short"
+              },
+              {
+                "show": true,
+                "min": null,
+                "max": null,
+                "logBase": 1,
+                "format": "short",
+                "label": ""
+              }
+            ],
+            "xaxis": {
+              "show": true
+            },
+            "scopedVars": {},
+            "repeatIteration": 1468526033314
+          },
+          {
+            "aliasColors": {
+              "Progress": "#7EB26D",
+              "Total": "#1F78C1"
+            },
+            "bars": false,
+            "datasource": "localGraphite",
+            "editable": true,
+            "error": false,
+            "fill": 1,
+            "grid": {
+              "threshold1": null,
+              "threshold1Color": "rgba(216, 200, 27, 0.27)",
+              "threshold2": null,
+              "threshold2Color": "rgba(234, 112, 112, 0.22)",
+              "thresholdLine": false
+            },
+            "height": "",
+            "id": 5,
+            "legend": {
+              "alignAsTable": false,
+              "avg": false,
+              "current": false,
+              "hideEmpty": false,
+              "max": false,
+              "min": false,
+              "rightSide": false,
+              "show": true,
+              "total": false,
+              "values": false
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "repeat": null,
+            "seriesOverrides": [
+              {
+                "alias": "Total",
+                "fillBelowTo": "Progress",
+                "lines": true
+              },
+              {
+                "alias": "Progress",
+                "fill": 5,
+                "lines": true
+              }
+            ],
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "hide": false,
+                "target": "alias(stats.gauges.room.$rooms.controllerProgress, 'Progress')",
+                "textEditor": false,
+                "refId": "A"
+              },
+              {
+                "hide": false,
+                "target": "alias(stats.gauges.room.$rooms.controllerProgressTotal, 'Total')",
+                "textEditor": false,
+                "refId": "B"
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Room Controller Upgrade",
+            "tooltip": {
+              "shared": true,
+              "value_type": "individual",
+              "sort": 0,
+              "msResolution": false
+            },
+            "transparent": false,
+            "type": "graph",
+            "yaxes": [
+              {
+                "show": true,
+                "min": null,
+                "max": null,
+                "logBase": 1,
+                "format": "short",
+                "label": ""
+              },
+              {
+                "show": true,
+                "min": null,
+                "max": null,
+                "logBase": 1,
+                "format": "short",
+                "label": ""
+              }
+            ],
+            "xaxis": {
+              "show": true
+            },
+            "scopedVars": {},
+            "repeatIteration": 1468526033314
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": true,
+            "colorValue": false,
+            "colors": [
+              "rgba(62, 8, 62, 0.9)",
+              "rgba(20, 77, 112, 0.9)",
+              "rgba(32, 119, 29, 0.97)"
+            ],
+            "decimals": 2,
+            "editable": true,
+            "error": false,
+            "format": "percent",
+            "height": "",
+            "id": 10,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "150%",
+            "prefix": "",
+            "prefixFontSize": "150%",
+            "span": 3,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "targets": [
+              {
+                "hide": false,
+                "target": "asPercent(stats.gauges.room.$rooms.controllerProgress, #B)",
+                "textEditor": false,
+                "refId": "A"
+              },
+              {
+                "hide": true,
+                "target": "stats.gauges.room.$rooms.controllerProgressTotal",
+                "textEditor": false,
+                "refId": "B"
+              }
+            ],
+            "thresholds": "50,75",
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "RCL Progress",
+            "type": "singlestat",
+            "valueFontSize": "200%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "current",
+            "datasource": "localGraphite",
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "rangeMaps": [
+              {
+                "from": "null",
+                "to": "null",
+                "text": "N/A"
+              }
+            ],
+            "mappingType": 1,
+            "gauge": {
+              "show": false,
+              "minValue": 0,
+              "maxValue": 100,
+              "thresholdMarkers": true,
+              "thresholdLabels": false
+            },
+            "scopedVars": {},
+            "repeatIteration": 1468526033314
+          }
+        ],
+        "repeat": "rooms",
+        "showTitle": true,
+        "title": "$rooms",
+        "scopedVars": {
+          "rooms": {
+            "text": "E33S49",
+            "value": "E33S49",
+            "selected": false
+          }
+        }
+      }
+    ],
+    "time": {
+      "from": "now-5m",
+      "to": "now"
+    },
+    "timepicker": {
+      "collapse": false,
+      "enable": true,
+      "notice": false,
+      "now": true,
+      "refresh_intervals": [
+        "15s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "type": "timepicker"
+    },
+    "templating": {
+      "list": [
+        {
+          "allFormat": "regex values",
+          "current": {},
+          "datasource": "localGraphite",
+          "includeAll": true,
+          "multi": true,
+          "multiFormat": "glob",
+          "name": "rooms",
+          "query": "stats.gauges.room.*",
+          "refresh_on_load": true,
+          "regex": "",
+          "type": "query",
+          "refresh": 1,
+          "hide": 0,
+          "options": []
+        }
+      ]
+    },
+    "annotations": {
+      "list": []
+    },
+    "refresh": "15s",
+    "schemaVersion": 12,
+    "version": 1,
+    "links": [],
+    "gnetId": null
+  }
+}

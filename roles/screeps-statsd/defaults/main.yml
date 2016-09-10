@@ -1,5 +1,5 @@
 ---
 # defaults file for screeps-statsd
-docker_engine_version: 1.9.1
+docker_engine_version: latest
 docker_keyserver: hkp://p80.pool.sks-keyservers.net:80
 docker_repo_key: 58118E89F3A912897C070ADBF76221572C52609D

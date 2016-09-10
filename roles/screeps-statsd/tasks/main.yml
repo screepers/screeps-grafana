@@ -10,7 +10,7 @@
 
 - name: Install docker
   when: ansible_distribution == 'Ubuntu'
-  apt: name=docker-engine={{ docker_engine_version }}-0~{{ansible_distribution_release}} update_cache=yes
+  apt: name=docker-engine update_cache=yes
 
 - name: Install pip
   when: ansible_distribution == 'Ubuntu'
@@ -18,6 +18,15 @@
 
 - name: Install docker-py
   pip: name=docker-py
+
+- name: Install pyyaml
+  pip: name=pyyaml
+
+- name: Install docker-compose 
+  copy: 
+    src: docker-compose
+    dest: /usr/local/bin/docker-compose
+    mode: 755
 
 - name: Check for data volume
   stat: path=/dev/xvdf
@@ -49,24 +58,38 @@
     - /data/data/grafana:/opt/grafana/data
   when: data_volume.stat.exists
 
-# tasks file for screeps-statsd
-- name: graphite docker
-  docker:
-    name: graphite
-    image: kamon/grafana_graphite
-    ports:
-    - "80:80"
-    - "81:81"
-    state: restarted
-    volumes: "{{ docker_volume_options | default() }}"
+- name: copy docker-compose.yml
+  copy:
+    src: docker-compose.yml
+    dest: /root/
 
-- name: screeps-statsd docker
-  docker:
-    name: screeps-statsd
-    image: kaen/screeps-statsd
-    links:
-    - graphite
-    env:
-      SCREEPS_USERNAME: "{{ screeps_username }}"
-      SCREEPS_EMAIL: "{{ screeps_email }}"
-      SCREEPS_PASSWORD: "{{ screeps_password }}"
+- name: create docker-compose.override.yml
+  copy:
+    content: |
+      version: "2"
+      services:
+        grafana:
+          ports:
+            - "80:3000"
+    dest: /root/docker-compose.override.yml
+
+- name: copy sample dashboard
+  copy:
+    src: sampleDashboard.json
+    dest: /root/sampleDashboard.json
+
+- name: copy setup script
+  copy:
+    src: setup.sh
+    dest: /root/setup.sh
+
+- name: Write docker-compose.env
+  template:
+    src: docker-compose.env.j2
+    dest: /root/docker-compose.env
+
+# tasks file for screeps-statsd
+- name: docker containers
+  command: bash setup.sh
+  args:
+    chdir: /root
