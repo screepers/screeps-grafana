@@ -8,13 +8,16 @@ function exportStats() {
     cpu: {},
   };
 
+  Memory.stats.time = Game.time;
+
   // Collect room stats
   for (let roomName in Game.rooms) {
     let room = Game.rooms[roomName];
     let isMyRoom = (room.controller ? room.controller.my : false);
     if (isMyRoom) {
       let roomStats = Memory.stats.rooms[roomName] = {};
-      roomStats.storageEnergy           = (room.storage ? room.storage.store[RESOURCE_ENERGY] : 0);
+      roomStats.storageEnergy           = (room.storage ? room.storage.store.energy : 0);
+      roomStats.terminalEnergy          = (room.terminal ? room.terminal.store.energy : 0);
       roomStats.energyAvailable         = room.energyAvailable;
       roomStats.energyCapacityAvailable = room.energyCapacityAvailable;
       roomStats.controllerProgress      = room.controller.progress;
