@@ -27,7 +27,6 @@ Run the setup:
 bash setup.sh
 ```
 
-
 Go to http://localhost:1337 in your browser, then see Usage below.
 
 ## Path 2: Robust but not easy
