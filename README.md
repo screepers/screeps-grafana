@@ -19,11 +19,14 @@ cp docker-compose.env.example docker-compose.env
 $EDITOR docker-compose.env
 ```
 
+Note: If you are using Docker Toolbox you will also need to expose the port 1337 via the virtualbox port forwarding feature.
+
 Run the setup:
 
 ```
 bash setup.sh
 ```
+
 
 Go to http://localhost:1337 in your browser, then see Usage below.
 
