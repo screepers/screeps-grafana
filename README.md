@@ -43,6 +43,7 @@ You're now ready to run this whale of a command. Replace the stuff in caps with 
 
 ```
 ansible-playbook \
+  -e screeps_hostname=https://screeps.com \
   -e screeps_username=YOURUSERNAME \
   -e screeps_password=YOURPASSWORD \
   -e screeps_email=YOUREMAIL \
