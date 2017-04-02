@@ -81,9 +81,9 @@ class ScreepsStatsd
     if prefix is ''
       console.log "Pushing to gauges - " + new Date()
       for k,v of data
-      if typeof v is 'object'
-        @report(v, prefix+k+'.')
-      else
-        @client.gauge prefix+k, v
+        if typeof v is 'object'
+          @report(v, prefix+k+'.')
+        else
+          @client.gauge prefix+k, v
 
 module.exports = ScreepsStatsd
