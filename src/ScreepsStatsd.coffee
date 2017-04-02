@@ -80,6 +80,7 @@ class ScreepsStatsd
   report: (data, prefix="") =>
     if prefix is ''
       console.log "Pushing to gauges - " + new Date()
+      for k,v of data
       if typeof v is 'object'
         @report(v, prefix+k+'.')
       else
