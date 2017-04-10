@@ -43,18 +43,19 @@ class ScreepsStatsd
     if(token != "" && succes)
       @getMemory()
       return
-    if(process.env.SCREEPS_BASIC_AUTH == 1)
+    #console.log "ENV = " + JSON.stringify(process.env)
+    if process.env.SCREEPS_BASIC_AUTH and process.env.SCREEPS_HOSTNAME
       @signinBasicAuth()
       return
     @client = new StatsD host: process.env.GRAPHITE_PORT_8125_UDP_ADDR
-    console.log "New login request - " + new Date()
     options =
-      uri: (process.env.SCREEPS_HOSTNAME || 'https://screeps.com') + '/api/auth/signin'
+      uri: 'https://screeps.com/api/auth/signin'
       json: true
       method: 'POST'
       body:
         email: process.env.SCREEPS_EMAIL
         password: process.env.SCREEPS_PASSWORD
+    console.log "New login request - " + options.uri + " - " + new Date()
     rp(options).then (x) =>
       token = x.token
       @getMemory()
@@ -66,11 +67,11 @@ class ScreepsStatsd
   ###
   signinBasicAuth: () =>
     @client = new StatsD host: process.env.GRAPHITE_PORT_8125_UDP_ADDR
-    console.log "New login request via HTTP Basic - " + new Date()
     options =
-      uri: (process.env.SCREEPS_HOSTNAME || 'https://screeps.com') + '/api/auth/signin'
+      uri: process.env.SCREEPS_HOSTNAME + '/api/auth/signin'
       json: true
       method: 'POST'
+    console.log "New login request via HTTP Basic - " + options.uri + " - " + new Date()
     rp(options).auth(process.env.SCREEPS_USERNAME, process.env.SCREEPS_PASSWORD, true).then (x) =>
       token = x.token
       @getMemory()
