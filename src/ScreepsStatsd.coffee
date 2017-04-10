@@ -6,6 +6,7 @@ For full copyright and license information, please see the LICENSE file
 
 @author     Bryan Conrad <bkconrad@gmail.com>
 @copyright  2016 Bryan Conrad
+@copyright  2017 Ross Perkins
 @link       https://github.com/hopsoft/docker-graphite-statsd
 @license    http://choosealicense.com/licenses/MIT  MIT License
 ###
@@ -78,32 +79,44 @@ class ScreepsStatsd
 
   getMemory: () =>
     succes = false
+    apiEndpoint = '/api/user/memory'
+    fromSegment = process.env.SCREEPS_STATS_SOURCE && process.env.SCREEPS_STATS_SOURCE != 'memory'
+    if fromSegment
+      apiEndpoint = '/api/user/memory-segment?' + process.env.SCREEPS_STATS_SOURCE
     options =
-      uri: process.env.SCREEPS_HOSTNAME + '/api/user/memory'
+      uri: process.env.SCREEPS_HOSTNAME + apiEndpoint
       method: 'GET'
       json: true
       resolveWithFullResponse: true
       headers:
         "X-Token": token
         "X-Username": token
-      qs:
+    # segment api doesn't support limiting scope to 'stats' element
+    if not fromSegment
+      options.qs =
         path: 'stats'
+    #console.log "Using request options: " + JSON.stringify(options)
     rp(options).then (x) =>
       # yeah... dunno why
       token = x.headers['x-token']
       return unless x.body.data
-      data = x.body.data.substring(3)
-      finalData = JSON.parse zlib.inflateSync(new Buffer(data, 'base64')).toString()
       succes = true
-      @report(finalData)
+      if fromSegment
+        # segments come as plain text, not deflated
+        finalData = JSON.parse x.body.data
+        # Use only the 'stats' data from this segment, in case there is other stuff
+        @report(finalData.stats)
+      else
+        # memory comes deflated, first 3 chars "gz:" to indicate the deflation
+        data = x.body.data.substring(3)
+        finalData = JSON.parse zlib.inflateSync(new Buffer(data, 'base64')).toString()
+        @report(finalData)
 
   report: (data, prefix="") =>
-    if prefix is ''
-      console.log "Pushing to gauges - " + new Date()
-      for k,v of data
-        if typeof v is 'object'
-          @report(v, prefix+k+'.')
-        else
-          @client.gauge prefix+k, v
+    for k,v of data
+      if typeof v is 'object'
+        @report(v, prefix+k+'.')
+      else
+        @client.gauge prefix+k, v
 
 module.exports = ScreepsStatsd

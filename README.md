@@ -41,6 +41,19 @@ Create a password for your screeps account if you haven't already.
 
 You're now ready to run this whale of a command. Replace the stuff in caps with values that makes sense
 
+For `YOURSOURCE` use either `memory` (the default) or `segment=N` where `N` is the number
+of the memory segment that holds your stats.
+
+Examples:
+
+- `-e screeps_stats_source=memory` is the default and need not be specified.
+It will get statistics from `Memory.stats`
+- `-e screeps_stats_source=segment=0` will get statistics from the `stats` key
+in the JSON data stored in segment `0`
+
+### Ansible Command-line
+
+
 ```
 ansible-playbook \
   -e screeps_username=YOURUSERNAME \
