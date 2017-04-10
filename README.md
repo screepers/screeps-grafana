@@ -43,13 +43,10 @@ You're now ready to run this whale of a command. Replace the stuff in caps with 
 
 ```
 ansible-playbook \
-  -e screeps_hostname=https://screeps.com \
   -e screeps_username=YOURUSERNAME \
   -e screeps_password=YOURPASSWORD \
   -e screeps_email=YOUREMAIL \
-  -e screeps_baisc_auth=0 \
   --user ubuntu \
-  --private-key YOURPRIVATEKEY \
   -i ,YOURSERVERIP \
   playbook.yml
 ```
@@ -94,10 +91,29 @@ to apply. Refresh your browser and voila!
 ## Advanced configuration
 
 ### Alternative (Basic HTTP) Authentication
+
+To read stats from a private server, you must use the option `screeps_basic_auth=1`
+and pass the additional setting `screeps_hostname` which should use the `http` protocol,
+use your private server's hostname or IP, and use the screep server port (by default
+`21025` unless your server changed it).
+
 The value of `SCREEPS_BASIC_AUTH` determines how Grafana will try to login to the Screeps server.  
+
 If it's `0` the default mechanism used by the official server will be used. If it is `1` an alternative
 mechanism is used, using HTTP Basic Authentication. This method is required by some private server mods
-such as "screepsmod-auth".
+such as [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth).
+
+```
+ansible-playbook \
+  -e screeps_basic_auth=1 \
+  -e screeps_hostname=http://your.private.server.name:21025 \
+  -e screeps_username=YOURUSERNAME \
+  -e screeps_password=YOURPASSWORD \
+  -e screeps_email=YOUREMAIL \
+  --user ubuntu \
+  -i ,YOURSERVERIP \
+  playbook.yml
+```
 
 ## License
 
