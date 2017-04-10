@@ -115,6 +115,34 @@ ansible-playbook \
   playbook.yml
 ```
 
+
+## Important Development Notes
+
+If you're modifying `screeps-grafana` and wanting to test your changes, you'll want
+to know the following:
+
+After you make changes to your own fork of this repository, you will need to generate
+a docker image, publish it to Docker Hub and modify `docker-compose.yml` to use your own
+custom docker image rather than `screepers/screeps-statsd`.
+
+Where `YOU` is your [Docker Hub](https://hub.docker.com) username:
+
+```bash
+sudo docker build -t YOU/screeps-statsd .
+sudo docker login -u YOU -p YOUR_DOCKER_HUB_PASSWORD
+sudo docker push YOU/screeps-statsd
+```
+
+After completing these steps, your new custom image `YOU/screeps-statsd` will exist
+on Docker Hub and you can use it.
+
+Add `-e screeps_node_image=YOU/screeps-statsd` to the `ansible-playbook` command line
+to use your own Docker Hub image instead of the default.
+
+Each time you want to test new changes, you need to `docker build`, `docker push`
+and then `ansible-playbook` to update your container with your new code.
+
+
 ## License
 
 This software is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
