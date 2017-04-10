@@ -43,8 +43,11 @@ class ScreepsStatsd
     if(token != "" && succes)
       @getMemory()
       return
+    #console.log "ENV = " + JSON.stringify(process.env)
+    if process.env.SCREEPS_BASIC_AUTH and process.env.SCREEPS_HOSTNAME
+      @signinBasicAuth()
+      return
     @client = new StatsD host: process.env.GRAPHITE_PORT_8125_UDP_ADDR
-    console.log "New login request - " + new Date()
     options =
       uri: 'https://screeps.com/api/auth/signin'
       json: true
@@ -52,15 +55,32 @@ class ScreepsStatsd
       body:
         email: process.env.SCREEPS_EMAIL
         password: process.env.SCREEPS_PASSWORD
+    console.log "New login request - " + options.uri + " - " + new Date()
     rp(options).then (x) =>
+      token = x.token
+      @getMemory()
+
+  ###
+  Sign-in using HTTP Basic Authentication (username & password).
+  This non-standard way of signing in is used by some private server
+  auth-mods. This can be disabled/enable via env-variables (see README).
+  ###
+  signinBasicAuth: () =>
+    @client = new StatsD host: process.env.GRAPHITE_PORT_8125_UDP_ADDR
+    options =
+      uri: process.env.SCREEPS_HOSTNAME + '/api/auth/signin'
+      json: true
+      method: 'POST'
+    console.log "New login request via HTTP Basic - " + options.uri + " - " + new Date()
+    rp(options).auth(process.env.SCREEPS_USERNAME, process.env.SCREEPS_PASSWORD, true).then (x) =>
       token = x.token
       @getMemory()
 
   getMemory: () =>
     succes = false
     options =
-      uri: 'https://screeps.com/api/user/memory'
-      method: 'GET' 
+      uri: process.env.SCREEPS_HOSTNAME + '/api/user/memory'
+      method: 'GET'
       json: true
       resolveWithFullResponse: true
       headers:
@@ -72,17 +92,18 @@ class ScreepsStatsd
       # yeah... dunno why
       token = x.headers['x-token']
       return unless x.body.data
-      data = x.body.data.split('gz:')[1]
-      finalData = JSON.parse zlib.gunzipSync(new Buffer(data, 'base64')).toString()
+      data = x.body.data.substring(3)
+      finalData = JSON.parse zlib.inflateSync(new Buffer(data, 'base64')).toString()
       succes = true
       @report(finalData)
 
   report: (data, prefix="") =>
     if prefix is ''
       console.log "Pushing to gauges - " + new Date()
-      if typeof v is 'object'
-        @report(v, prefix+k+'.')
-      else
-        @client.gauge prefix+k, v
+      for k,v of data
+        if typeof v is 'object'
+          @report(v, prefix+k+'.')
+        else
+          @client.gauge prefix+k, v
 
 module.exports = ScreepsStatsd

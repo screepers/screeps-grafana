@@ -1,7 +1,7 @@
 version: "2"
 services:
   node:
-    image: screepers/screeps-statsd
+    image: {{ screeps_node_image|default ('screepers/screeps-statsd') }}
     restart: always
     links:
      - statsd
