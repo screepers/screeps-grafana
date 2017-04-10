@@ -44,12 +44,12 @@ class ScreepsStatsd
       @getMemory()
       return
     #console.log "ENV = " + JSON.stringify(process.env)
-    if process.env.SCREEPS_BASIC_AUTH and process.env.SCREEPS_HOSTNAME
+    if process.env.SCREEPS_BASIC_AUTH == 1
       @signinBasicAuth()
       return
     @client = new StatsD host: process.env.GRAPHITE_PORT_8125_UDP_ADDR
     options =
-      uri: 'https://screeps.com/api/auth/signin'
+      uri: process.env.SCREEPS_HOSTNAME + '/api/auth/signin'
       json: true
       method: 'POST'
       body:
