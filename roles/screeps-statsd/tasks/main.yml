@@ -58,10 +58,10 @@
     - /data/data/grafana:/opt/grafana/data
   when: data_volume.stat.exists
 
-- name: copy docker-compose.yml
-  copy:
-    src: docker-compose.yml
-    dest: /root/
+- name: Write docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: /root/docker-compose.yml
 
 - name: create docker-compose.override.yml
   copy:
