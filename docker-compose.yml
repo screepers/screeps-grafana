@@ -1,4 +1,7 @@
 version: "2"
+volumes:
+  graphite_data:
+  grafana_data:
 services:
   node:
     build:
@@ -19,12 +22,12 @@ services:
     restart: always
     volumes:
      - /opt/graphite/conf
-     - /opt/graphite/storage/whisper
+     - graphite_data:/opt/graphite/storage/whisper
   grafana:
     image: grafana/grafana
     restart: always
     volumes:
-     - /var/lib/grafana
+     - grafana_data:/var/lib/grafana
     links:
      - graphite
     ports:
