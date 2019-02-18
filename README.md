@@ -89,6 +89,12 @@ to install the plugins, then
 `docker-compose restart grafana`
 to apply. Refresh your browser and voila!
 
+## Development
+If you need to alter the container e.g. because you edited the coffeescript that fetches the stats, you can rebuild and restart the container like this:
+`docker-compose down && docker-compose build node && docker-compose up -d`
+The stats data and grafana config are stored in persistent volumes so will be preserved after you restart the container.
+Note: older versions of the docker-compose.yml container description file did not store these data in persistent volumes so they will disappear after you run this command. These still exist on disc in anonymous volumes so could be recovered with some effort.
+
 ## License
 
 This software is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
