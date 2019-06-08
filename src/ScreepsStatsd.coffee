@@ -68,6 +68,7 @@ class ScreepsStatsd
         "X-Username": token
       qs:
         path: 'stats'
+        shard: process.env.SCREEPS_SHARD
     rp(options).then (x) =>
       # yeah... dunno why
       token = x.headers['x-token']
